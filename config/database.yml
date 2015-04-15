@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: myflix_development
+  host: localhost
+  pool: 5
+  username: <%= Figaro.env.username %>
+  password: <%= Figaro.env.password %>
+  template: template0
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: myflix_test
+  host: localhost
+  pool: 5
+  username: <%= Figaro.env.username %>
+  password: <%= Figaro.env.password %>
+  template: template0
