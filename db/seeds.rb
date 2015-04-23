@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Dir.foreach('public/tmp/') do |item|
+  next if item == '.' or item == '..'
+  Video.create(title: File.basename(item, '.jpg').titleize, description: 'A really great television show', small_cover_url: item, category_id: rand(Category.count)+1)
+end

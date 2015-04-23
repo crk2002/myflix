@@ -4,8 +4,8 @@ development:
   database: myflix_development
   host: localhost
   pool: 5
-  username: <%= Figaro.env.username %>
-  password: <%= Figaro.env.password %>
+  username: <%= Figaro.env.pg_username %>
+  password: <%= Figaro.env.pg_password %>
   template: template0
 
 test:
@@ -14,6 +14,6 @@ test:
   database: myflix_test
   host: localhost
   pool: 5
-  username: <%= Figaro.env.username %>
-  password: <%= Figaro.env.password %>
+  username: <%= Figaro.env.pg_username %>
+  password: <%= Figaro.env.pg_password %>
   template: template0
