@@ -6,6 +6,36 @@
       .video_info.col-sm-3
         %header
           %h3= @video.title
-          %span Rating: 4.5/5.0
+          - if @reviews.any?
+            %span Rating: #{@video.average_rating.round(1)}/5
         %p= @video.description
+        -if !video_in_queue?(@video)
+          =link_to "+ My Queue", queue_entries_path(video_id: @video.id), method: "post", class: "btn btn-default"
+        -else
+          =link_to "Remove from Queue", queue_entry_path(video_id: @video.id), method: "delete", class: "btn btn-default"
 
+%section.reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      =bootstrap_form_for @review, url: video_reviews_path(@video, @review) do |f|
+        %fieldset
+          .form-group
+            =f.select :rating, [["1 Star",1],["2 Stars",2],["3 Stars",3],["4 Stars",4],["5 Stars",5]], { label: "Rate this video:" }
+          .form-group
+            .row
+              .col-sm-8
+                =f.text_area :content, label: "Write a Review"
+        %fieldset
+          =f.submit "Submit", class: "btn btn-success"
+          
+      %header
+        %h3 User Reviews (#{@reviews.count})
+      %ul
+        - @reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %span Rating: #{review.rating} / 5
+                %p by #{ link_to review.user_name, review.user }
+              .col-sm-8
+                %p #{review.content}

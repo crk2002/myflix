@@ -12,11 +12,15 @@ gem 'pg'
 gem 'figaro'
 gem 'bcrypt'
 gem 'bootstrap_form'
+gem 'fabrication'
+gem 'faker'
 
 group :development do
   gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development, :test do

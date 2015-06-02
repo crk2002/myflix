@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to videos_path if logged_in?
   end
 
   def create
     user = User.find_by email: params[:email]
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    if login_user(user)
       redirect_to videos_path
     else
       flash[:error] = "There was a problem with your login credentials"
