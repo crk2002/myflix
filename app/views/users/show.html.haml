@@ -1,0 +1,42 @@
+%section.user.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %article
+        %header
+          %img(src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest('#{@user.email}'.downcase)}?s=40")
+          %h2 #{@user.name}'s video collection (#{@queue_entries.count} videos)
+          -if current_user != @user
+            %button.btn.btn-default
+              -if @following
+                =link_to "Unfollow", following_path(@following), method: :delete
+              -else
+                =link_to "Follow", followings_path(followed_id: @user.id), method: :post
+        %table.table
+          %thead
+            %tr
+              %th(width="30%") Video Title
+              %th(width="15%") Genre
+          %tbody
+            - @queue_entries.each do |queue_entry|
+              %tr
+                %td
+                  = link_to queue_entry.video_title, queue_entry.video
+                %td
+                  = link_to queue_entry.video_category.name, queue_entry.video_category
+
+%section.user_reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %header
+        %h3 #{@user.name}'s Reviews (#{@reviews.count})
+      %ul
+        - @reviews.each do | review |
+          %article.review
+            %li.row
+              .col-sm-2
+                %p
+                  = link_to review.video_title
+                %col Rating: #{review.rating} / 5
+              .col-sm-8
+                %p
+                  =review.content

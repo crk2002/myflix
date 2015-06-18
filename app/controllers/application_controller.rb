@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def reject_authenticated_user
+    redirect_to current_user, alert: "You're already logged in!" if logged_in?
+  end
+  
   def video_in_queue?(video)
     current_user.queue_entries.find_by(video: video)
   end

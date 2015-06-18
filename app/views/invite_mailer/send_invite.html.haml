@@ -1,0 +1,7 @@
+!!! 5
+%html(lang="en-US")
+  %body
+    %p #{@invite.user_name} would like you to join MyFLIX! You can get great movies for a low cost!
+    %p #{@invite.user_name} wrote: #{@invite.message}
+    %p If you would like to join, follow
+    = link_to "this link", register_with_invite_url(@invite.token)

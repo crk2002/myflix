@@ -7,4 +7,5 @@ class Review < ActiveRecord::Base
   belongs_to :video
   
   delegate :name, to: :user, prefix: true
+  delegate :title, to: :video, prefix: true
 end

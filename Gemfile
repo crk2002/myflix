@@ -19,13 +19,13 @@ group :development do
   gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'capybara'
-  gem 'launchy'
 end
 
 group :development, :test do
   gem 'pry'
   gem 'pry-nav'
+  gem 'capybara'
+  gem 'capybara-email'
   gem 'rspec-rails', '2.99'
   gem 'shoulda-matchers'
 end

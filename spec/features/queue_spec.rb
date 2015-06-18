@@ -25,21 +25,3 @@ feature 'Queue Manipulation' do
     
   end
 end
-
-def add_video_to_queue(video)
-  visit(videos_path)
-  find("a[href='/videos/#{video.id}']").click
-  click_link("+ My Queue")
-end
-
-def set_video_position(video, position)
-  fill_in "video_#{video.id}", with: position
-end
-
-def update_queue
-  click_button('Update Instant Queue')
-end
-
-def expect_video_position(video, position)
-  expect(find("#video_#{video.id}").value).to eq(position.to_s)
-end

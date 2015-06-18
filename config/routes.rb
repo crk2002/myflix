@@ -4,6 +4,10 @@ Myflix::Application.routes.draw do
       get 'search', on: :collection
       resources :reviews, only: [:create]
   end
+  resources :followings, only: [:index, :create, :destroy]
+  resources :reset_password_requests, only: [:new, :create, :edit, :update]
+  resources :invites, only: [:new, :create]
+  get '/register/:token', to: 'users#new_with_invite', as: 'register_with_invite'
   get '/categories/:id', to: 'categories#show', as: 'category'
   get '/register', to: 'users#new', as: 'register'
   get '/login', to: 'sessions#new'
