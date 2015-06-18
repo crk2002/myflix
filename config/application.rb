@@ -15,7 +15,6 @@ module Myflix
       g.orm :active_record
       g.template_engine :haml
     end
-    config.action_mailer.default_url_options = { host: 'ruby-crk2002.c9.io' }
     config.autoload_paths += ["#{Rails.root}/lib"]
   end
 end
