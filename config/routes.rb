@@ -1,4 +1,6 @@
 Myflix::Application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   root to: 'static_pages#front'
   resources :videos, only: [:show, :index] do
       get 'search', on: :collection

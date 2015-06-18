@@ -14,6 +14,9 @@ gem 'bcrypt'
 gem 'bootstrap_form'
 gem 'fabrication'
 gem 'faker'
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'puma'
 
 group :development do
   gem 'thin'

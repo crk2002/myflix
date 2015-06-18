@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @invite = Invite.find_by token: params[:token]
     if @user.save
-      WelcomeMailer.send_welcome_mail(@user).deliver
+      WelcomeMailer.delay.send_welcome_mail(@user)
       if @invite
         flash[:notice] = "User #{@user.name} was successfully created and is now following #{@invite.user.name}!"
         @user.follow(@invite.user)
