@@ -16,4 +16,5 @@ deployment:
       - heroku maintenance:on --app crk-myflix-staging
       - git push git@heroku.com:crk-myflix-staging.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app crk-myflix-staging
+      - heroku pgbackups:restore DATABASE `heroku pgbackups:url --app crk-myflix-production` --app crk-myflix-staging
       - heroku maintenance:off --app crk-myflix-staging
