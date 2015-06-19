@@ -17,3 +17,7 @@ test:
   username: <%= Figaro.env.pg_username %>
   password: <%= Figaro.env.pg_password %>
   template: template0
+  
+production:
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
