@@ -16,8 +16,7 @@ gem 'fabrication'
 gem 'faker'
 gem 'sidekiq'
 gem 'sinatra', require: false
-gem 'puma'
-gem 'sentry-raven'
+
 
 group :development do
   gem 'thin'
@@ -40,5 +39,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'sentry-raven'
+  gem 'puma'
 end
 
