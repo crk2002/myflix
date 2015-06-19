@@ -5,15 +5,15 @@ deployment:
   production:
     branch: master
     commands:
-      - heroku maintenance:on --app crk_myflix_production
-      - heroku pg:backups capture --app crk_myflix_production
-      - git push git@heroku.com:crk_myflix_production.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app crk_myflix_production
-      - heroku maintenance:off --app crk_myflix_production
+      - heroku maintenance:on --app crk-myflix-production
+      - heroku pg:backups capture --app crk-myflix-production
+      - git push git@heroku.com:crk-myflix-production.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app crk-myflix-production
+      - heroku maintenance:off --app crk-myflix-production
   staging:
     branch: staging
     commands:
-      - heroku maintenance:on --app crk_myflix_staging
-      - git push git@heroku.com:crk_myflix_staging.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app crk_myflix_staging
-      - heroku maintenance:off --app crk_myflix_staging
+      - heroku maintenance:on --app crk-myflix-staging
+      - git push git@heroku.com:crk-myflix-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app crk-myflix-staging
+      - heroku maintenance:off --app crk-myflix-staging
